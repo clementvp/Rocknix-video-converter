@@ -1,12 +1,20 @@
-# Video Converter for Rocknix (RG34XXSP)
+# Video Converter for Rocknix (RG34XXSP / RGDS)
 
-This Bash script automates the video conversion process to ensure perfect compatibility with the Rocknix operating system on the Anbernic RG34XXSP.
-It standardizes videos to a 720x480 resolution (3:2 aspect ratio) while preserving the original content's proportions by adding black bars (padding) where necessary.
+This Bash script automates the video conversion process to ensure perfect compatibility with the Rocknix operating system on Anbernic handhelds.
+It standardizes videos to the target device's native resolution while preserving the original content's proportions by adding black bars (padding) where necessary.
+
+## 🎮 Supported Devices
+
+| Device | Resolution | Aspect Ratio |
+|--------|-----------|--------------|
+| `rg34xxsp` | 720x480 | 3:2 |
+| `rgds` | 640x480 | 4:3 |
 
 ## 🚀 Key Features
 
-* **Resolution Optimization**: Resizes specifically for 720x480 displays.
-* **Aspect Ratio Management**: Forces a 3:2 output while preventing image stretching.
+* **Multi-Device Support**: Target a specific device or convert for all at once.
+* **Resolution Optimization**: Resizes to each device's native display resolution.
+* **Aspect Ratio Management**: Forces the correct output ratio while preventing image stretching.
 * **Maximum Compatibility**: Uses H.264 (Main Profile, Level 4.0) and AAC audio for smooth hardware decoding.
 * **Batch Processing**: Automatically handles `.mp4`, `.mkv`, `.avi`, and `.mov` files within a directory.
 
@@ -41,8 +49,12 @@ chmod +x convert.sh
 3. Run the conversion:
 
 ```bash
-./convert.sh
+./convert.sh              # Convert for all devices
+./convert.sh rg34xxsp     # Convert for RG34XXSP only (720x480)
+./convert.sh rgds         # Convert for RGDS only (640x480)
 ```
+
+Output files are saved in `output/<device>/` (e.g. `output/rgds/video.mp4`).
 
 ## ⚙️ Technical Specifications
 
@@ -50,5 +62,5 @@ The script applies the following FFmpeg parameters to ensure optimal playback:
 
 * **Video Codec**: `libx264` (Main Profile, Level 4.0).
 * **Pixel Format**: `yuv420p` (Standard for most players).
-* **Scaling Filter**: Resizes to fit 720x480 using a "decrease" strategy to avoid distortion, then pads the remaining space.
+* **Scaling Filter**: Resizes to fit the target resolution using a "decrease" strategy to avoid distortion, then pads the remaining space.
 * **Audio Codec**: `aac` at 128k.

@@ -1,14 +1,15 @@
-# Video Converter for Rocknix (RG34XXSP / RGDS)
+# Video Converter for Rocknix and PSP (RG34XXSP / RGDS / PSP)
 
-This Bash script automates the video conversion process to ensure perfect compatibility with the Rocknix operating system on Anbernic handhelds.
+This Bash script automates the video conversion process to ensure perfect compatibility with the Rocknix operating system on Anbernic handhelds and the Sony PSP.
 It standardizes videos to the target device's native resolution while preserving the original content's proportions by adding black bars (padding) where necessary.
 
 ## 🎮 Supported Devices
 
-| Device | Resolution | Aspect Ratio |
-|--------|-----------|--------------|
-| `rg34xxsp` | 720x480 | 3:2 |
-| `rgds` | 640x480 | 4:3 |
+| Device | Resolution | Aspect Ratio | H.264 Profile |
+|--------|-----------|--------------|---------------|
+| `rg34xxsp` | 720x480 | 3:2 | Main, Level 4.0 |
+| `rgds` | 640x480 | 4:3 | Main, Level 4.0 |
+| `psp` | 480x272 | 16:9 | Baseline, Level 3.0 |
 
 ## 🚀 Key Features
 
@@ -52,6 +53,7 @@ chmod +x convert.sh
 ./convert.sh              # Convert for all devices
 ./convert.sh rg34xxsp     # Convert for RG34XXSP only (720x480)
 ./convert.sh rgds         # Convert for RGDS only (640x480)
+./convert.sh psp          # Convert for PSP only (480x272)
 ```
 
 Output files are saved in `output/<device>/` (e.g. `output/rgds/video.mp4`).
